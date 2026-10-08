@@ -1,0 +1,14 @@
+<label [for]="id" class="form-label block font-medium mb-1">{{ label }}</label>
+<div class="atom-input control">
+  <input
+  [id]="id"
+  [type]="type"
+  [required]="required"
+  [attr.placeholder]="placeholder"
+  [value]="value"
+  (input)="onInput ($event)"
+  (blur)="onTouched()"
+  [disabled]="disabled"
+  class="form-input w-full"
+  />
+</div>
