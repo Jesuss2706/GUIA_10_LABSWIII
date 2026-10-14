@@ -1,4 +1,4 @@
-export interface Categoria {
+export interface Producto {
   id? : number;
   nombre? : string;
   precio? : number;

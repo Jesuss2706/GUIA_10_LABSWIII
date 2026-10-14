@@ -1,0 +1,38 @@
+<form class="form-horizontal" (submit)="onSubmit($event.target)">
+  <molecule-form-field>
+    <atom-input-text
+      label="Nombre"
+      id="prod-nombre"
+      name="nombre"
+      type="text"
+      [required]="true"
+      [(ngModel)]="producto.nombre"
+    >
+    </atom-input-text>
+  </molecule-form-field>
+  <molecule-form-field>
+    <atom-input-text
+      label="Precio"
+      id="prod-precio"
+      name="precio"
+      type="number"
+      [required]="true"
+      [(ngModel)]="producto.precio"
+    >
+    </atom-input-text>
+  </molecule-form-field>
+  <molecule-form-field>
+    <atom-select
+      label="Categoria"
+      id="sol-prod"
+      name="categoria"
+      type="text"
+      [options]="categoriasOptions"
+      [required]="true"
+      [(ngModel)]="producto.categoria"
+    >
+    </atom-select>
+  </molecule-form-field>
+
+  <app-button label="Registrar Solicitud" type="submit" color="success"></app-button>
+</form>

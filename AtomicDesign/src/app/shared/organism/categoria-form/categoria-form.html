@@ -1,0 +1,29 @@
+<form class="form-horizontal" (submit)="onSubmit ($event. target )">
+
+  <molecule-form-field>
+    <atom-input -text
+      id="cat-nombre"
+      name="nombreCategoria"
+      type="text"
+      label="Nombre de la categoria"
+      placeholder="Digite la categoria"
+      [required]="true"
+      [minlength]="3"
+      [(ngModel) ]="categoria. nombre">
+    </atom-input -text>
+  </molecule-form-field>
+
+  <molecule-form-field>
+    <atom-input -text
+      id="cat-desc"
+      name="descripcion"
+      type="text"
+      placeholder="Digite la descripción"
+      label="Descripción"
+      [minlength]="5"
+      [(ngModel)]="categoria.descripcion">
+    </atom-input -text>
+  </molecule-form-field>
+
+  <app-button label="Registrar categoria" type="submit" color="success"></app-button>
+</form>

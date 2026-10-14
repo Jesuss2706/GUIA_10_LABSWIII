@@ -1,15 +1,14 @@
-import { Component, Input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, Input, forwardRef } from '@angular/core';
+import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  imports: [FormsModule],
   selector: 'app-input-text',
-  styleUrl: './input-text.css',
+  imports: [FormsModule],
   templateUrl: './input-text.html',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputTextComponent),
+      useExisting: forwardRef(() => InputText),
       multi: true
     }
   ]
@@ -20,5 +19,4 @@ export class InputText {
   @Input() type = 'text';
   @Input() required = false;
   @Input() placeholder = '';
-
 }
