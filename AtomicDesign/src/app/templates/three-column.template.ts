@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   imports: [CommonModule],
@@ -9,5 +9,8 @@ import { Component } from '@angular/core';
 })
 
 export class ThreeColumn {
-
+  @Input() titulo = '';
+  @Input() tituloIzquierda = '';
+  @Input() tituloCentro = '';
+  @Input() tituloDerecha = '';
 }

@@ -1,14 +1,14 @@
-<form class="form-horizontal" (submit)="onSubmit ($event.target)">
+<form class="form-horizontal" (submit)="onSubmit($event)">
   <molecule-form-field>
     <atom-select
       label="Producto"
       id="sol-prod"
       name="producto"
-      type="text"
-      [options ]="productosOptions"
+      placeholder="Seleccione un producto"
+      [options]="productosOptions"
       [required]="true"
-      [(ngModel) ]="solicitud.producto">
-    </atom-select>
+      [(ngModel)]="solicitud.producto"
+    ></atom-select>
   </molecule-form-field>
 
   <molecule-form-field>
@@ -17,21 +17,23 @@
       id="sol-cant"
       name="cantidad"
       type="number"
+      placeholder="Digite la cantidad"
       [required]="true"
-      [(ngModel)]="solicitud.cantidad">
-    </atom-input -text>
+      [(ngModel)]="solicitud.cantidad"
+    ></atom-input-text>
   </molecule-form-field>
 
   <molecule-form-field>
-    <atom-input -text
+    <atom-input-text
       label="Fecha"
       id="sol-fecha"
       name="fecha"
       type="date"
+      placeholder="dd/mm/aaaa"
       [required]="true"
-      [(ngModel) ]="solicitud.fecha">
-    </atom-input -text>
+      [(ngModel)]="solicitud.fecha"
+    ></atom-input-text>
   </molecule-form-field>
 
-  <app-button label="Registrar Solicitud" type="submit" color="success"></app-button>
+  <atom-button label="Registrar solicitud" type="submit" color="success"></atom-button>
 </form>

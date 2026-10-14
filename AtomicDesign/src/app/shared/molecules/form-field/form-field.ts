@@ -1,10 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
-  imports: [CommonModule],
   standalone: true,
-  selector: 'app-form-field',
+  selector: 'molecule-form-field',
   styleUrl: './form-field.css',
   templateUrl: './form-field.html',
 })

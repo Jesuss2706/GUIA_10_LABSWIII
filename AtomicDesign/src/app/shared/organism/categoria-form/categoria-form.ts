@@ -5,23 +5,21 @@ import { Button } from '../../atoms/button/button';
 import { FormField } from '../../molecules/form-field/form-field';
 import { Categoria } from '../../../models/categoria';
 
-@Component ({
-  selector : 'organismo-categoria-form',
+@Component({
+  selector: 'organismo-categoria-form',
   standalone: true,
-  imports: [FormsModule,
-      InputText,
-      Button,
-      FormField],
-  templateUrl: './categoria-form. component.html'
+  imports: [FormsModule, InputText, Button, FormField],
+  templateUrl: './categoria-form.html',
 })
 export class CategoriaForm {
-  categoria: Categoria = { nombre: '', descripcion: ''};
+  categoria: Categoria = { nombre: '', descripcion: '' };
 
-  onSubmit(form: any) {
+  onSubmit(event: Event) {
+    const form = event.target as HTMLFormElement;
     if (form.checkValidity()) {
       alert('Categoria enviada: ' + JSON.stringify(this.categoria));
       form.reset();
-      this.categoria = { nombre: '', descripcion:''};
+      this.categoria = { nombre: '', descripcion: '' };
     } else {
       form.reportValidity();
     }

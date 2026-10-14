@@ -1,3 +1,37 @@
-<div class="row g-4">
-  <ng-content></ng-content>
+<section>
+  @if (titulo) {
+    <h1 class="mb-4 text-center">{{ titulo }}</h1>
+  }
+  <div class="row g-4">
+    <div class="col-12 col-md-4">
+      <div class="card-atom h-100">
+        <h5>{{ tituloIzquierda }}</h5>
+        <ng-content select="[izquierda]"></ng-content>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card-atom h-100">
+        <h5>{{ tituloCentro }}</h5>
+        <ng-content select="[centro]"></ng-content>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card-atom h-100">
+        <h5>{{ tituloDerecha }}</h5>
+        <ng-content select="[derecha]"></ng-content>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <template-three-column
+    titulo="Gestión de la clinica"
+    tituloIzquierda="Formulario de categorías"
+    tituloCentro="Formulario de medicos"
+    tituloDerecha="Formulario de solicitudes"
+  >
+    <organismo-categoria-form izquierda></organismo-categoria-form>
+    <organismo-medicos-form centro></organismo-medicos-form>
+    <organismo-solicitud-form derecha></organismo-solicitud-form>
+  </template-three-column>
 </div>

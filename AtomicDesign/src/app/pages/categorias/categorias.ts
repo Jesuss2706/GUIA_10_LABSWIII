@@ -1,11 +1,11 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { CategoriaForm } from '../../shared/organism/categoria-form/categoria-form';
 
 @Component({
-  imports: [CommonModule, CategoriaFormComponent],
   standalone: true,
   selector: 'app-categorias',
-  styleUrl: './categorias.css',
+  imports: [CategoriaForm],
   templateUrl: './categorias.html',
+  styleUrl: './categorias.css',
 })
 export class Categorias {}
