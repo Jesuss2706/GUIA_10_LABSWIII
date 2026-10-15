@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputText } from '../../atoms/input-text/input-text';
 import { Select, SelectOption } from '../../atoms/select/select';
@@ -6,6 +6,8 @@ import { Button } from '../../atoms/button/button';
 import { FormField } from '../../molecules/form-field/form-field';
 import { Solicitud } from '../../../models/solicitud';
 import { Producto } from '../../../models/producto';
+import { ProductoService } from '../../../services/producto.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'organismo-solicitud-form',
@@ -14,6 +16,9 @@ import { Producto } from '../../../models/producto';
   templateUrl: './solicitud-form.html',
 })
 export class SolicitudForm implements OnInit {
+  private productoService = inject(ProductoService);
+  private sub?: Subscription;
+
   solicitud: Solicitud = { producto: '', cantidad: 0, fecha: '' };
   productos: Producto[] = [];
 
@@ -25,7 +30,13 @@ export class SolicitudForm implements OnInit {
   }
 
   ngOnInit() {
-    this.cargarProductos();
+    this.sub = this.productoService.productos.subscribe((lista) => {
+      this.productos = lista;
+    });
+  }
+
+  ngOnDestroy() {
+    this.sub?.unsubscribe();
   }
 
   cargarProductos() {
