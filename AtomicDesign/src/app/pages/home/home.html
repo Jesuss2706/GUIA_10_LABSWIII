@@ -1,24 +1,12 @@
 <div class="container">
-  <h1 class="mb-4 text-center">Gestion de Productos</h1>
-  <template-three-column>
-    <div class="col-md-4">
-      <div class="card-atom">
-        <h5>Formulario de categorias</h5>
-        <organismo-categoria-form></organismo-categoria-form>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card-atom">
-        <h5>Formulario de productos</h5>
-        <organismo-producto-form></organismo-producto-form>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card-atom">
-        <h5>Formulario de solicitudes</h5>
-        <organismo-solicitud-form></organismo-solicitud-form>
-      </div>
-    </div>
+  <template-three-column
+    titulo="Gestión de la clinica"
+    tituloIzquierda="Formulario de categorías"
+    tituloCentro="Formulario de medicos"
+    tituloDerecha="Formulario de solicitudes"
+  >
+    <organismo-categoria-form izquierda></organismo-categoria-form>
+    <organismo-medicos-form centro></organismo-medicos-form>
+    <organismo-solicitud-form derecha></organismo-solicitud-form>
   </template-three-column>
 </div>

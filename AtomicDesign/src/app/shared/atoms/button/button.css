@@ -1,4 +1,39 @@
-.btn:hover{
-  box-shadow: 0 6px 18px rgba(6, 7, 94, 0.25);
+.clinic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.65rem 1.25rem;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.clinic-btn--primary { background-color: var(--clinic-primary); }
+.clinic-btn--primary:hover { background-color: var(--clinic-primary-dark); }
+
+.clinic-btn--success { background-color: var(--clinic-success); }
+.clinic-btn--success:hover { background-color: var(--clinic-success-dark); }
+
+.clinic-btn--secondary { background-color: var(--clinic-secondary); }
+
+.clinic-btn:hover {
+  box-shadow: 0 6px 18px rgba(10, 95, 107, 0.25);
   transform: translateY(-1px);
+}
+
+.clinic-btn:focus-visible {
+  outline: 3px solid var(--clinic-focus);
+  outline-offset: 2px;
+}
+
+.clinic-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }

@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+/* Tema de la clínica: cambie estos valores por los colores de la guía de estilos */
+:root {
+  --clinic-primary: #0f7b8a;
+  --clinic-primary-dark: #0a5f6b;
+  --clinic-success: #2e9d6b;
+  --clinic-success-dark: #237d55;
+  --clinic-secondary: #6c8793;
+  --clinic-text: #1d3b48;
+  --clinic-bg: #f3f9fa;
+  --clinic-surface: #ffffff;
+  --clinic-radius: 12px;
+  --clinic-shadow: 0 2px 12px rgba(10, 95, 107, 0.08);
+  --clinic-focus: rgba(15, 123, 138, 0.25);
+}
+
+body {
+  background-color: var(--clinic-bg);
+  color: var(--clinic-text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+h1,
+h2 {
+  color: var(--clinic-primary-dark);
+}
+
+.navbar-brand {
+  color: var(--clinic-primary-dark) !important;
+  font-weight: 700;
+}
+
+.nav-link:hover {
+  color: var(--clinic-primary) !important;
+}
+
+.card-atom {
+  height: 100%;
+  padding: 1.25rem;
+  background-color: var(--clinic-surface);
+  border-radius: var(--clinic-radius);
+  box-shadow: var(--clinic-shadow);
+}
+
+.card-atom h5 {
+  color: var(--clinic-primary-dark);
+  font-weight: 600;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--clinic-primary);
+  box-shadow: 0 0 0 0.2rem var(--clinic-focus);
+}
