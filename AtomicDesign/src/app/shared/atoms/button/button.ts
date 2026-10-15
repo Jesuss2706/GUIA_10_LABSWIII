@@ -1,15 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 export type ClinicButtonColor = 'primary' | 'success' | 'secondary';
 
 @Component({
-  standalone: true,
   selector: 'atom-button',
   styleUrl: './button.css',
   templateUrl: './button.html',
 })
 export class Button {
-  @Input() label = 'Enviar';
-  @Input() type: 'button' | 'submit' | 'reset' = 'submit';
-  @Input() color: ClinicButtonColor = 'primary';
+  readonly label = input('Enviar');
+  readonly type = input<'button' | 'submit' | 'reset'>('submit');
+  readonly color = input<ClinicButtonColor>('primary');
 }

@@ -1,13 +1,13 @@
-<label [for]="id" class="form-label">{{ label }}</label>
+<label [for]="id()" class="form-label">{{ label() }}</label>
 <input
   class="form-control"
-  [id]="id"
-  [type]="type"
-  [required]="required"
-  [attr.placeholder]="placeholder || null"
-  [attr.minlength]="minlength"
-  [value]="value ?? ''"
-  [disabled]="disabled"
+  [id]="id()"
+  [type]="type()"
+  [required]="required()"
+  [attr.placeholder]="placeholder() || null"
+  [attr.minlength]="minlength()"
+  [value]="value() ?? ''"
+  [disabled]="disabled()"
   (input)="onInput($event)"
   (blur)="onTouched()"
 />

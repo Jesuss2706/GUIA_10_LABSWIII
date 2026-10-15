@@ -1,8 +1,7 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, forwardRef, input, signal } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  standalone: true,
   selector: 'atom-input-text',
   host: { '[attr.id]': 'null' },
   templateUrl: './input-text.html',
@@ -15,21 +14,21 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
 })
 export class InputText implements ControlValueAccessor {
-  @Input() label = '';
-  @Input() id = '';
-  @Input() type = 'text';
-  @Input() required = false;
-  @Input() placeholder = '';
-  @Input() minlength: number | null = null;
+  readonly label = input('');
+  readonly id = input('');
+  readonly type = input('text');
+  readonly required = input(false);
+  readonly placeholder = input('');
+  readonly minlength = input<number | null>(null);
 
-  value: string | number | null = '';
-  disabled = false;
+  readonly value = signal<string | number | null>('');
+  readonly disabled = signal(false);
 
   onChange: (value: unknown) => void = () => {};
   onTouched: () => void = () => {};
 
   writeValue(value: unknown): void {
-    this.value = value === null || value === undefined ? '' : (value as string | number);
+    this.value.set(value === null || value === undefined ? '' : (value as string | number));
   }
 
   registerOnChange(fn: (value: unknown) => void): void {
@@ -41,12 +40,12 @@ export class InputText implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    this.disabled.set(isDisabled);
   }
 
   onInput(event: Event): void {
     const raw = (event.target as HTMLInputElement).value;
-    this.value = raw;
-    this.onChange(this.type === 'number' ? (raw === '' ? null : Number(raw)) : raw);
+    this.value.set(raw);
+    this.onChange(this.type() === 'number' ? (raw === '' ? null : Number(raw)) : raw);
   }
 }

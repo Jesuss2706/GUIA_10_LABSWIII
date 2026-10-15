@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, forwardRef, input, signal } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export interface SelectOption {
@@ -7,7 +7,6 @@ export interface SelectOption {
 }
 
 @Component({
-  standalone: true,
   selector: 'atom-select',
   host: { '[attr.id]': 'null' },
   templateUrl: './select.html',
@@ -20,20 +19,20 @@ export interface SelectOption {
   ],
 })
 export class Select implements ControlValueAccessor {
-  @Input() label = '';
-  @Input() id = '';
-  @Input() required = false;
-  @Input() placeholder = 'Seleccione una opción';
-  @Input() options: SelectOption[] = [];
+  readonly label = input('');
+  readonly id = input('');
+  readonly required = input(false);
+  readonly placeholder = input('Seleccione una opción');
+  readonly options = input<SelectOption[]>([]);
 
-  value = '';
-  disabled = false;
+  readonly value = signal('');
+  readonly disabled = signal(false);
 
   onChange: (value: string) => void = () => {};
   onTouched: () => void = () => {};
 
   writeValue(value: unknown): void {
-    this.value = value === null || value === undefined ? '' : String(value);
+    this.value.set(value === null || value === undefined ? '' : String(value));
   }
 
   registerOnChange(fn: (value: string) => void): void {
@@ -45,12 +44,12 @@ export class Select implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    this.disabled.set(isDisabled);
   }
 
   onSelect(event: Event): void {
     const selected = (event.target as HTMLSelectElement).value;
-    this.value = selected;
+    this.value.set(selected);
     this.onChange(selected);
   }
 }
